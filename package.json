@@ -1,0 +1,66 @@
+{
+  "name": "retryyy",
+  "version": "0.1.1",
+  "description": "A better way to retry async operations in TypeScript/JavaScript.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stefanmaric/retryyy.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Stefan Maric",
+    "email": "me@stefanmaric.com"
+  },
+  "type": "module",
+  "exports": {
+    ".": "./lib/retryyy.js",
+    "./core": "./lib/core.js",
+    "./policies": "./lib/policies/index.js",
+    "./policies/*": "./lib/policies/*.js"
+  },
+  "main": "./lib/retryyy.js",
+  "files": [
+    "lib/",
+    "src/",
+    "package.json",
+    "LICENSE.md",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "format": "prettier .",
+    "lint": "eslint . --max-warnings 0",
+    "prepare": "husky",
+    "test": "vitest",
+    "tsc": "tsc"
+  },
+  "lint-staged": {
+    "*": "prettier --ignore-unknown --write"
+  },
+  "devDependencies": {
+    "@eslint/js": "9.9.1",
+    "@release-it/conventional-changelog": "8.0.1",
+    "@types/eslint__js": "8.42.3",
+    "@types/node": "22.5.1",
+    "@vitest/coverage-v8": "2.0.5",
+    "@vitest/eslint-plugin": "1.1.0",
+    "console-fail-test": "0.5.0",
+    "conventional-changelog-angular": "8.0.0",
+    "eslint": "9.9.1",
+    "husky": "9.1.5",
+    "lint-staged": "15.2.9",
+    "prettier": "3.3.3",
+    "prettier-plugin-curly": "0.2.2",
+    "prettier-plugin-packagejson": "2.5.2",
+    "prettier-plugin-sh": "0.14.0",
+    "release-it": "17.6.0",
+    "tsup": "8.2.4",
+    "typescript": "5.5.4",
+    "typescript-eslint": "8.3.0",
+    "vitest": "2.0.5"
+  },
+  "packageManager": "pnpm@9.7.0+sha512.dc09430156b427f5ecfc79888899e1c39d2d690f004be70e05230b72cb173d96839587545d09429b55ac3c429c801b4dc3c0e002f653830a420fa2dd4e3cf9cf",
+  "engines": {
+    "node": ">=18.3.0"
+  }
+}
