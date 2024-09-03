@@ -484,12 +484,6 @@ export const retry = (fn, policy) => {
 
 Such small function is pretty much the entirety of `retryyy`'s [core implementation](./src/core.ts).
 
-## TODO
-
-Before v1.0 is released, the following items need to be addressed:
-
-- [ ] Tests.
-
 ## Contributing
 
 Please refer to [CONTRIBUTING.md](./.github/CONTRIBUTING.md).
