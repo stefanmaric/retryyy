@@ -23,9 +23,9 @@ export type JitterOptions = {
  * Randomizes the delay between retries by adding or removing a random amount of
  * time to the delay provided by the next policy in the chain.
  */
-export const Jitter = (options: JitterOptions): RetryPolicy => {
-  const range = options.range ?? -0.5
-  const offset = options.offset ?? 0.25
+export const Jitter = (options?: JitterOptions): RetryPolicy => {
+  const range = options?.range ?? -0.5
+  const offset = options?.offset ?? 0.25
 
   return (state, next) => {
     if (!next) {
