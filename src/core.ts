@@ -75,6 +75,24 @@ export type RetryPolicy = (
   next?: RetryPolicy,
 ) => number
 
+export type PolicyList =
+  | [RetryPolicy, RetryPolicy, ...(RetryPolicy | RetryPolicy[])[]]
+  | [[RetryPolicy], RetryPolicy, ...(RetryPolicy | RetryPolicy[])[]]
+  | [
+      [RetryPolicy],
+      [RetryPolicy, ...RetryPolicy[]],
+      ...(RetryPolicy | RetryPolicy[])[],
+    ]
+  | [
+      RetryPolicy,
+      [RetryPolicy, ...RetryPolicy[]],
+      ...(RetryPolicy | RetryPolicy[])[],
+    ]
+  | [
+      [RetryPolicy, RetryPolicy, ...RetryPolicy[]],
+      ...(RetryPolicy | RetryPolicy[])[],
+    ]
+
 /**
  * Joins multiple retry policies into a single policy. The policies will be
  * called from left to right, each with the next policy as the second argument.
@@ -82,9 +100,7 @@ export type RetryPolicy = (
  * @param policies The policies to join.
  * @returns A new policy that is the result of joining the provided policies.
  */
-export const join = (
-  ...policies: (RetryPolicy | RetryPolicy[])[]
-): RetryPolicy =>
+export const join = (...policies: PolicyList): RetryPolicy =>
   policies.flat().reduceRight((next, policy) => (state) => policy(state, next))
 
 export type AbortWrapper<
