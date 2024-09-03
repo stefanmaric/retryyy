@@ -89,11 +89,11 @@ export const Default = (options?: DefaultOptions): RetryPolicy =>
       Breaker({
         max: options?.maxAttempts,
       }),
-      options?.fastTrack ? FastTrack() : (undefined as unknown as RetryPolicy),
+      options?.fastTrack ? FastTrack() : undefined,
       PollyJitter({
         initial: options?.initialDelay,
         max: options?.maxDelay,
       }),
-      options?.next as RetryPolicy,
-    ].filter(Boolean),
+      options?.next,
+    ].filter(Boolean) as [RetryPolicy, RetryPolicy],
   )
