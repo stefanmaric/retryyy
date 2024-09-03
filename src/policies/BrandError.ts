@@ -17,6 +17,6 @@ export const BrandError = (): RetryPolicy => (state, next) => {
     }
     throw state.error
   } catch (err) {
-    throw new RetryyyError(state.errors.concat(err), { cause: err })
+    throw new RetryyyError(state.errors, { cause: err })
   }
 }
