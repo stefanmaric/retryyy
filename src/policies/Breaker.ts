@@ -15,7 +15,7 @@ export const Breaker = (options?: BreakerOptions): RetryPolicy => {
   const max = options?.max ?? 10
 
   return (state, next) => {
-    if (state.attempt > max) {
+    if (state.attempt >= max) {
       throw state.error
     }
 
